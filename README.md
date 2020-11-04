@@ -22,3 +22,9 @@ Twitter
 
 <a href="https://twitter.com/comma_ai">Follow us!</a>
 
+References
+------
+
+1. [Many to many LSTM for regression task](https://stackoverflow.com/questions/53667213/implementing-a-many-to-many-regression-task).  
+2. [LSTM for time series prediction](https://stackabuse.com/time-series-prediction-using-lstm-with-pytorch-in-python/).  
+
