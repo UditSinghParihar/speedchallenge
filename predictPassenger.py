@@ -34,11 +34,18 @@ class LSTM(nn.Module):
 							torch.zeros(1,1,self.hidden_layer_size))
 
 	def forward(self, input_seq):
+		# input_seq : (seq_len, batch, input_size)
+		# lstm_out : (seq_len, batch, hidden_layer)
+		# hidden_cell[0] : (1, batch, hidden_layer) at t = seq_len
+		# predictions : (seq_len, output_size)
+
 		lstm_out, self.hidden_cell = self.lstm(input_seq.view(len(input_seq) ,1, -1), self.hidden_cell)
 		predictions = self.linear(lstm_out.view(len(input_seq), -1))
 
 		print(lstm_out.shape, len(self.hidden_cell), self.hidden_cell[0].shape)
-		print(predictions.shape)
+		print(predictions.shape, predictions[-1])
+		print(lstm_out.view(len(input_seq), -1).shape)
+		print(input_seq.view(len(input_seq) ,1, -1).shape, input_seq.shape, len(input_seq))
 		exit(1)
 		return predictions[-1]
 
